@@ -8,4 +8,5 @@ The link to the demo is: http://iv.tale.land
 
 The link to the video is: https://youtu.be/hxbOebSjUWM
 
+Team Member: Ran Bi, XiaoYi Ma, JingAn Chen
 
