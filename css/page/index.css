@@ -162,7 +162,7 @@ body {
             }
 
             #chart > #language > div[data-cluster='5'] {
-                background-color: rgba(90, 90, 90, 0.3);
+                background-color: rgba(90, 255, 255, 0.3);
             }
 
             #chart > #language > div[data-cluster='6'] {
