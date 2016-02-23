@@ -1,0 +1,304 @@
+::-webkit-inner-spin-button,
+::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+body {
+    background-color: white;
+    font-family: 'Segoe UI Light';
+}
+
+body > main > article {
+    position: fixed;
+    background-color: white;
+}
+
+body > main > article > * {
+    position: absolute;
+}
+
+body > main > article:after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 0px;
+    height: 34px;
+    line-height: 34px;
+    color: #CCC;
+    right: 10px;
+}
+
+#title {
+    top: 0px;
+    left: 80px;
+    height: 160px;
+    line-height: 160px;
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#title:after {
+    display: none;
+}
+
+#title > div {
+    display: inline-block;
+    height: 160px;
+    line-height: 160px;
+    white-space: nowrap;
+    position: relative;
+}
+
+#title > div > select {
+    font-size: 24px;
+    color: #FF9;
+    background-color: transparent;
+    border: none;
+    font-family: 'Segoe UI Light';
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: dotted 2px #FF9;
+}
+
+#title > div > select:hover {
+    background-color: #111;
+}
+
+#map {
+    top: 80px;
+    bottom: 80px;
+    left: 0px;
+    right: 0px;
+}
+
+#map > #map-container {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#map > #map-container svg * {
+    cursor: pointer;
+    transition: stroke 0.2s, stroke-width 0.2s, fill 0.2s;
+    z-index: 2;
+}
+
+#map > #map-container svg circle.fade-off {
+    opacity: 0.2 !important;
+}
+
+#map > #map-container svg circle.highlight {
+    fill: white !important;
+    stroke-width: 20px !important;
+    stroke: white !important;
+    z-index: 22;
+}
+
+#map > #map-container svg circle:hover {
+    fill: white !important;
+    stroke-width: 20px !important;
+    stroke: white !important;
+    z-index: 22;
+}
+
+#chart {
+    display: none;
+    top: 160px;
+    bottom: 80px;
+    left: 80px;
+    right: 960px;
+}
+
+#chart > #language {
+    top: 20px;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    z-index: 222;
+}
+
+#chart > #language > div {
+    position: absolute;
+    transition: margin-left 0.2s, height 0.2s, width 0.2s, border-radius 0.2s, background-color 0.2s, opacity 0.2s, margin-top 0.2s;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    opacity: 0;
+    margin-left: -10px;
+    margin-top: -10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#chart > #language > div.fade-off {
+    opacity: 0.2 !important;
+}
+
+#chart > #language > div[data-cluster='0'] {
+    background-color: rgba(90, 144, 255, 0.3);
+}
+
+#chart > #language > div[data-cluster='1'] {
+    background-color: rgba(255, 90, 90, 0.3);
+}
+
+#chart > #language > div[data-cluster='2'] {
+    background-color: rgba(90, 218, 48, 0.3);
+}
+
+#chart > #language > div[data-cluster='3'] {
+    background-color: rgba(255, 218, 48, 0.3);
+}
+
+#chart > #language > div[data-cluster='4'] {
+    background-color: rgba(90, 90, 255, 0.3);
+}
+
+#chart > #language > div[data-cluster='5'] {
+    background-color: rgba(90, 255, 255, 0.3);
+}
+
+#chart > #language > div[data-cluster='6'] {
+    background-color: rgba(255, 192, 90, 0.3);
+}
+
+#chart > #language > div.highlight {
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: -20px;
+    margin-top: -20px;
+    z-index: 99;
+}
+
+#chart > #language > div:hover {
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: -20px;
+    margin-top: -20px;
+    z-index: 99;
+}
+
+#ruler-x {
+    bottom: 47px;
+    left: 80px;
+    right: 960px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 40px;
+    box-shadow: none;
+    background-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #111;
+    transition: width 0.5s, opacity 0.5s;
+    opacity: 0;
+}
+
+#ruler-x > section:nth-child(1) {
+    left: 0px;
+}
+
+#ruler-x > section:nth-child(2) {
+    width: 100px;
+    margin-left: -50px;
+    left: 50%;
+    text-align: center;
+}
+
+#ruler-x > section:nth-child(3) {
+    right: 0px;
+}
+
+#ruler-y {
+    bottom: 80px;
+    left: 83px;
+    right: 960px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 40px;
+    box-shadow: none;
+    background-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #111;
+    transform-origin: left bottom;
+    transform: rotateZ(270deg);
+    transition: width 0.5s, opacity 0.5s;
+    opacity: 0;
+}
+
+#ruler-y > section:nth-child(1) {
+    left: 0px;
+}
+
+#ruler-y > section:nth-child(2) {
+    width: 100px;
+    margin-left: -50px;
+    left: 50%;
+    text-align: center;
+}
+
+#ruler-y > section:nth-child(3) {
+    right: 0px;
+}
+
+#info {
+    top: 640px;
+    right: 80px;
+    width: 800px;
+    bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#info > #info-name {
+    text-align: center;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    color: #FF9;
+    font-size: 40px;
+    line-height: 40px;
+    height: 40px;
+    margin-top: -20px;
+}
+
+#info > #info-longitude-latitude {
+    text-align: right;
+    right: 20px;
+    bottom: 20px;
+    color: #69F;
+    font-size: 20px;
+    line-height: 20px;
+    height: 20px;
+    margin-top: -10px;
+}
+
+#info > #info-longitude-latitude > span {
+    color: #9CF;
+}
+
+#info > #info-cluster {
+    left: 20px;
+    top: 20px;
+    color: #F90;
+    font-size: 20px;
+    line-height: 20px;
+    height: 20px;
+    margin-top: -10px;
+}
+
+#info > #info-cluster > span {
+    color: #FC3;
+}

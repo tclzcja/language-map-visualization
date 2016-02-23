@@ -1,10 +1,14 @@
-﻿var Data;
+/* jshint browser: true, esnext: true, devel: true, shadow: true */
+
+var Data;
 var HT_ID_Object;
+
+const $ = window.$;
 
 $(document).ready(
     function () {
 
-        Pool.Load("data", function (data) {
+        window.Pool.Load("data", function (data) {
 
             Data = JSON.parse(JSON.stringify(data));
 
@@ -28,7 +32,7 @@ $(document).ready(
         });
 
     }
-)
+);
 
 function Render() {
 
@@ -73,15 +77,18 @@ function Render() {
         //$(D).css("top", T_Base - R);
 
         switch ($("#select-cluster").val()) {
-            case "3": {
+        case "3":
+            {
                 $(D).attr("data-cluster", Data[Selection_Type][i].Cluster_3);
                 break;
             }
-            case "5": {
+        case "5":
+            {
                 $(D).attr("data-cluster", Data[Selection_Type][i].Cluster_5);
                 break;
             }
-            case "7": {
+        case "7":
+            {
                 $(D).attr("data-cluster", Data[Selection_Type][i].Cluster_7);
                 break;
             }
@@ -105,25 +112,25 @@ function Render() {
         Informatic($(this).attr("data-id"), $(this).attr("data-cluster"));
     }).on("mouseleave", function () {
         Go_Off($(this).attr("data-id"));
-    })
+    });
 
     $("#language > div").css("opacity", 1);
 
-    var map = new Datamap({
+    var map = new window.Datamap({
         element: document.getElementById('map-container'),
         fills: {
-            defaultFill: '#333', //any hex, color name or rgb/rgba value
-            '0': 'rgba(90, 144, 255, 0.5)',
-            '1': 'rgba(255, 90, 90, 0.5)',
-            '2': 'rgba(90, 218, 48, 0.5)',
-            '3': 'rgba(255, 218, 48, 0.5)',
-            '4': 'rgba(90, 90, 255, 0.5)',
-            '5': 'rgba(90, 255, 255, 0.3)',
-            '6': 'rgba(255, 192, 90, 0.3)'
+            defaultFill: '#EEE', //any hex, color name or rgb/rgba value
+            '0': 'rgba(90, 144, 255, 1)',
+            '1': 'rgba(255, 90, 90, 1)',
+            '2': 'rgba(90, 218, 48, 1)',
+            '3': 'rgba(255, 218, 48, 1)',
+            '4': 'rgba(90, 90, 255, 1)',
+            '5': 'rgba(90, 255, 255, 1)',
+            '6': 'rgba(255, 192, 90, 1)'
         },
         geographyConfig: {
-            borderWidth: 1,
-            borderColor: '#111',
+            borderWidth: 2,
+            borderColor: '#DDD',
             popupOnHover: false,
             highlightOnHover: false,
         },
@@ -140,7 +147,7 @@ function Render() {
             radius: 5,
             name: Data[Selection_Type][i].Name,
             fillKey: Data[Selection_Type][i]["Cluster_" + $("#select-cluster").val()],
-        })
+        });
     }
 
     map.bubbles(bubble, {
@@ -152,7 +159,7 @@ function Render() {
         Informatic(JSON.parse($(this).attr("data-info")).id, JSON.parse($(this).attr("data-info")).fillKey);
     }).on("mouseleave", function () {
         Go_Off(JSON.parse($(this).attr("data-info")).id, JSON.parse($(this).attr("data-info")).fillKey);
-    })
+    });
 
     $("#ruler-y").css("opacity", 1);
     $("#ruler-x").css("opacity", 1);
@@ -164,20 +171,23 @@ function Informatic(i, c) {
     $("#info-name").html(Data[Selection_Type][index].Name);
     $("#info-longitude-latitude").html("<span>Longitude</span> " + Data[Selection_Type][index].Longitude.toFixed(2) + " <span>Latitude</span> " + Data[Selection_Type][index].Latitude.toFixed(2));
     switch ($("#select-cluster").val()) {
-        case "3": {
+    case "3":
+        {
             $("#info-cluster").html("<span>Cluster</span> " + Data[Selection_Type][index].Cluster_3);
             break;
         }
-        case "5": {
+    case "5":
+        {
             $("#info-cluster").html("<span>Cluster</span> " + Data[Selection_Type][index].Cluster_5);
             break;
         }
-        case "7": {
+    case "7":
+        {
             $("#info-cluster").html("<span>Cluster</span> " + Data[Selection_Type][index].Cluster_7);
             break;
         }
     }
-    $("#chart > #language > div.highlight").removeClass("highlight")
+    $("#chart > #language > div.highlight").removeClass("highlight");
     $("#chart > #language > div[data-id='" + i + "']").addClass("highlight");
     $("#chart > #language > div[data-cluster!=" + c + "]").addClass("fade-off");
 
