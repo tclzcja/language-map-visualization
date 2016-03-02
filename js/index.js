@@ -37,7 +37,7 @@ $(document).ready(
 function Render() {
 
     $("#language").html("");
-    $("#map-container").html("");
+    $("#map").html("");
 
     var Selection_Type = $("#select-type").val();
 
@@ -117,9 +117,9 @@ function Render() {
     $("#language > div").css("opacity", 1);
 
     var map = new window.Datamap({
-        element: document.getElementById('map-container'),
+        element: document.getElementById('map'),
         fills: {
-            defaultFill: '#EEE', //any hex, color name or rgb/rgba value
+            defaultFill: '#222', //any hex, color name or rgb/rgba value
             '0': 'rgba(90, 144, 255, 1)',
             '1': 'rgba(255, 90, 90, 1)',
             '2': 'rgba(90, 218, 48, 1)',
@@ -130,7 +130,7 @@ function Render() {
         },
         geographyConfig: {
             borderWidth: 2,
-            borderColor: '#DDD',
+            borderColor: '#333',
             popupOnHover: false,
             highlightOnHover: false,
         },
@@ -155,7 +155,7 @@ function Render() {
         popupOnHover: false,
     });
 
-    $("#map-container svg circle").on("mouseenter", function () {
+    $("#map > svg circle").on("mouseenter", function () {
         Informatic(JSON.parse($(this).attr("data-info")).id, JSON.parse($(this).attr("data-info")).fillKey);
     }).on("mouseleave", function () {
         Go_Off(JSON.parse($(this).attr("data-info")).id, JSON.parse($(this).attr("data-info")).fillKey);
@@ -191,16 +191,16 @@ function Informatic(i, c) {
     $("#chart > #language > div[data-id='" + i + "']").addClass("highlight");
     $("#chart > #language > div[data-cluster!=" + c + "]").addClass("fade-off");
 
-    $("#map svg circle.highlight").attr("class", "datamaps-bubble");
+    $("#map > svg circle.highlight").attr("class", "datamaps-bubble");
     var s = "\"id\":" + index + ",";
     var cs = "\"fillKey\":" + c;
-    $("#map svg circle:not([data-info*='" + cs + "'])").attr("class", "datamaps-bubble fade-off");
-    $("#map svg circle[data-info*='" + s + "']").attr("class", "datamaps-bubble highlight");
+    $("#map > svg circle:not([data-info*='" + cs + "'])").attr("class", "datamaps-bubble fade-off");
+    $("#map > svg circle[data-info*='" + s + "']").attr("class", "datamaps-bubble highlight");
 }
 
 function Go_Off(i) {
     $("#chart > #language > div.highlight").removeClass("highlight");
-    $("#map svg circle.highlight").attr("class", "datamaps-bubble");
+    $("#map > svg circle.highlight").attr("class", "datamaps-bubble");
     $("#chart > #language > div.fade-off").removeClass("fade-off");
-    $("#map svg circle.fade-off").attr("class", "datamaps-bubble");
+    $("#map > svg circle.fade-off").attr("class", "datamaps-bubble");
 }
