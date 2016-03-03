@@ -17,7 +17,7 @@ body > header {
     top: 0px;
     left: 0px;
     right: 0px;
-    height: 5vh;
+    height: 6vh;
     padding-left: 2vh;
     font-size: 2vh;
     display: flex;
@@ -32,7 +32,13 @@ body > header > * {
     display: block;
 }
 
+body > header > header {
+    color: #69F;
+    font-weight: bold;
+}
+
 body > header > footer > select {
+    font-size: 100%;
     color: #FF9;
     background-color: transparent;
     border: none;
@@ -42,7 +48,6 @@ body > header > footer > select {
     -webkit-appearance: none;
     cursor: pointer;
     transition: background-color 0.2s;
-    border-bottom: dotted 2px #FF9;
 }
 
 body > header > div > select:hover {
